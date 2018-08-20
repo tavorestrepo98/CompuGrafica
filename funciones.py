@@ -1,12 +1,6 @@
 from math import *
 from random import *
 #taller parte1
-def mayor(a, b):
-	if a > b:
-		return a
-	else:
-		return b
-
 
 def sumamatrices(list1, list2, n):
 	resultado = []
@@ -25,7 +19,7 @@ def sumamatrices(list1, list2, n):
 	for i in range(0,n):
 		resultado = resultado + (list1[i]*list2[i])
 	return resultado
-'''
+
 def traslacion2(list1, list2):
 	resultado = []
 	temp = []
@@ -42,7 +36,7 @@ def traslacion2(list1, list2):
 		return resultado
 	else:
 		return "No se pueden multiplicar"
-
+'''
 def traslacion(l, l2):
 	x = l[0]+l2[0]
 	y = l[1]+l2[1]
@@ -62,7 +56,7 @@ def escalamiento(punto, e):
 	x = punto[0]*e[0]
 	y = punto[1]*e[1]
 	return [x,y]
-	
+'''
 def matrizidentidad(n):
 	resultado = []
 	temp = []
@@ -95,3 +89,4 @@ def hipotenusa():
 	catetob = input("Digite el valor del segundo cateto: ")
 	print "Los angulos del triangulo son: " + str(pi/2) + ", " + str((pi/2)-atan(catetoa/catetob)) + ", " + str(atan(catetoa/catetob))
 	return "El valor de la hipotenusa es: " + str(sqrt((catetoa * catetoa) + (catetob * catetob)))
+'''

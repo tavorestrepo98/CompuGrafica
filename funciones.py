@@ -56,6 +56,9 @@ def escalamiento(punto, e):
 	x = punto[0]*e[0]
 	y = punto[1]*e[1]
 	return [x,y]
+	
+def longitud(l1, l2):
+	return sqrt(((l1[0]-l2[0])*(l1[0]-l2[0])) + ((l1[1]-l2[1])*(l1[1]-l2[1])))
 '''
 def matrizidentidad(n):
 	resultado = []

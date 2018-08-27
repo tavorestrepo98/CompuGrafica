@@ -34,7 +34,7 @@ if __name__ == '__main__':
 				pantalla.fill(NEGRO)
 				pygame.draw.line(pantalla, VERDE, (CENTRO[0], 0), (CENTRO[0], alto), 4)
 				pygame.draw.line(pantalla, VERDE, (0, CENTRO[1]), (ancho, CENTRO[1]), 4)
-				pygame.draw.circle(pantalla, VERDE, [int(trascartesiano(CENTRO, p1)[0]), int(trascartesiano(CENTRO, p1)[1])], 3)
+				pygame.draw.circle(pantalla, VERDE, [int(trascartesiano(CENTRO, p1)[0]), int(trascartesiano(CENTRO, p1)[1])], 20)
 				
 				#pygame.draw.polygon(pantalla, VERDE, [trascartesiano(CENTRO, p1), trascartesiano(CENTRO, p2), trascartesiano(CENTRO, p3)], 5)
 				p1 = rotacion(p1, pi/30)

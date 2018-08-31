@@ -29,21 +29,22 @@ if __name__ == '__main__':
 			if event.type == pygame.QUIT:
 				fin = True
 			elif event.type == pygame.KEYDOWN:
+
 				if event.key == pygame.K_a:
-					p11 = pant_cart(CENTRO, list(pygame.mouse.get_pos()))
+					p11 = pant_cart2(CENTRO, list(pygame.mouse.get_pos()))
 				elif event.key == pygame.K_b:
-					p22 = pant_cart(CENTRO, list(pygame.mouse.get_pos()))
+					p22 = pant_cart2(CENTRO, list(pygame.mouse.get_pos()))
 				elif event.key == pygame.K_SPACE:
 					p11 = rotacion(p11, pi/30)
 					p22 = rotacion(p22, pi/30)
 
-		
-		pygame.draw.line(pantalla, VERDE, p11, p22, 4)
+
+		#pantalla.fill(NEGRO)
+		pygame.draw.line(pantalla, VERDE, trascartesiano(CENTRO,p11), trascartesiano(CENTRO,p22), 4)
 		pygame.draw.line(pantalla, BLANCO, (CENTRO[0], 0), (CENTRO[0], alto), 3)
 		pygame.draw.line(pantalla, BLANCO, (0, CENTRO[1]), (ancho, CENTRO[1]), 3)
 		pygame.display.flip()
-				
+
 		reloj.tick(200)
 
 	pygame.quit()
-

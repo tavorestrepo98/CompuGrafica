@@ -37,14 +37,39 @@ def escalamiento(punto, e):
 	x = punto[0]*e[0]
 	y = punto[1]*e[1]
 	return [x,y]
-	
+
 def longitud(l1, l2):
 	return sqrt(((l1[0]-l2[0])*(l1[0]-l2[0])) + ((l1[1]-l2[1])*(l1[1]-l2[1])))
 
-def pant_cart(l1, l2):
-	x = l2[0]-l1[0]
-	y = l1[1]-l2[1]
-	return [x, y]
+def pant_cart(centro, punto):
+	x = 0
+	y = 0
+	if(punto == centro):
+		return [0, 0]
+	elif((punto[0] >= centro[0]) and (punto[1] <= centro[1])):
+		x = punto[0] - centro[0]
+		y = -centro[1] + punto[1]
+		return [x, y]
+	elif((punto[0] <= centro[0]) and (punto[1] <= centro[1])):
+		x = centro[0]-punto[0]
+		y = -centro[1]+punto[1]
+		return [x, y]
+	elif((punto[0] >= centro[0]) and (punto[1] >= centro[1])):
+		x = punto[0]-centro[0]
+		y = -punto[1]+centro[1]
+		return [x, y]
+	elif((punto[0] <= centro[0]) and (punto[1] >= centro[1])):
+		x = centro[0]-punto[0]
+		y = -punto[1]+centro[1]
+		return [x, y]
+
+def pant_cart2(centro, punto):
+	x = punto[0] - centro[0]
+	y = centro[1]-punto[1]
+	return [x,y]
+
+
+
 
 '''
 def matrizidentidad(n):

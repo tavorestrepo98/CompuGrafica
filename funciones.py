@@ -13,30 +13,6 @@ def sumamatrices(list1, list2, n):
 	return resultado
 
 
-'''def productopunto(list1, list2):
-	n = len(list1)
-	resultado = 0
-	for i in range(0,n):
-		resultado = resultado + (list1[i]*list2[i])
-	return resultado
-
-def traslacion2(list1, list2):
-	resultado = []
-	temp = []
-	a = 0
-	if (len(list1[0]) == len(list2)):
-		for i in range(len(list1[0])):
-			temp = []
-			for j in range(len(list2[0])):
-				a = 0
-				for k in range(len(list2)):
-					a = a + (list1[i][k]*list2[k][j])
-				temp.append(a)
-			resultado.append(temp)
-		return resultado
-	else:
-		return "No se pueden multiplicar"
-'''
 def traslacion(l, l2):
 	x = l[0]+l2[0]
 	y = l[1]+l2[1]
@@ -52,6 +28,11 @@ def rotacion(p, angulo):
 	y = p[0]*sin(angulo) + p[1]*cos(angulo)
 	return [x,y]
 
+def rotacionhoraria(p, angulo):
+	x = p[0]*cos(angulo) + p[1]*sin(angulo)
+	y = -p[0]*sin(angulo) + p[1]*cos(angulo)
+	return [x,y]
+
 def escalamiento(punto, e):
 	x = punto[0]*e[0]
 	y = punto[1]*e[1]
@@ -59,6 +40,12 @@ def escalamiento(punto, e):
 	
 def longitud(l1, l2):
 	return sqrt(((l1[0]-l2[0])*(l1[0]-l2[0])) + ((l1[1]-l2[1])*(l1[1]-l2[1])))
+
+def pant_cart(l1, l2):
+	x = l2[0]-l1[0]
+	y = l1[1]-l2[1]
+	return [x, y]
+
 '''
 def matrizidentidad(n):
 	resultado = []

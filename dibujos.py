@@ -16,4 +16,4 @@ def rectangulo(pantalla, p):
     pygame.draw.rect(pantalla, VERDE, p, 3)
 
 def punto(pantalla, centro):
-    pygame.draw.circle(pantalla, VERDE, centro, 2)
+    pygame.draw.circle(pantalla, ROJO, centro, 4)

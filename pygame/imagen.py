@@ -16,18 +16,18 @@ if __name__ == '__main__':
     pygame.display.set_caption("Bart")
     color = pygame.Color(70, 80, 150)
     ventana.fill(BLANCO)
-    
+
     hecho = True
     my_imagen = pygame.image.load("imagenes/bart.gif")
     i = -5
     x = 590
     y = 300
-   
+
     while hecho:
 
     	ventana.fill(BLANCO)
         ventana.blit(my_imagen, (x,y))
-    	for event in pygame.event.get():
+    	for event in event.pygame.get():
     		if event.type == QUIT:
     			hecho = False
     			print "El usuario solicitó salir."
@@ -41,10 +41,10 @@ if __name__ == '__main__':
     				y = y-1
     			elif event.type == K_DOWN:
     				y = y+1
-    				
+
     	pygame.display.update()
         #pygame.display.flip()
-        
+
         #print i
 
 

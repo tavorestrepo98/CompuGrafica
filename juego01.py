@@ -62,10 +62,10 @@ if __name__ == '__main__':
     jugadores.add(j1)
     rivales = pygame.sprite.Group()
 
-    for i in range(10):
+    for i in range(17):
         r = Rival()
-        r.rect.x = randrange(ancho)
-        r.rect.y = randrange(alto)
+        r.rect.x = randrange(ancho-1)
+        r.rect.y = randrange(alto-1)
         r.vel_x = randrange(1, 6)
         rivales.add(r)
 
@@ -82,25 +82,21 @@ if __name__ == '__main__':
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    j1.vel_x = 2
+                    j1.vel_x = 3
                     j1.vel_y = 0
-                    #j2.vel_x = 2
-                    #j2.vel_y = 0
+
                 elif event.key == pygame.K_LEFT:
-                    j1.vel_x = -2
+                    j1.vel_x = -3
                     j1.vel_y = 0
-                    #j2.vel_x = -2
-                    #j2.vel_y = 0
+
                 elif event.key == pygame.K_UP:
                     j1.vel_x = 0
-                    j1.vel_y = -2
-                    #j2.vel_x = 0
-                    #j2.vel_y = -2
+                    j1.vel_y = -3
+
                 elif event.key == pygame.K_DOWN:
                     j1.vel_x = 0
-                    j1.vel_y = 2
-                    #j2.vel_x = 0
-                    #j2.vel_y = 2
+                    j1.vel_y = 3
+
 
         #Control
         ls_colision = pygame.sprite.spritecollide(j1, rivales, True)
@@ -118,6 +114,6 @@ if __name__ == '__main__':
         jugadores.draw(pantalla)
         rivales.draw(pantalla)
         pygame.display.flip()
-        reloj.tick(100)
+        reloj.tick(400)
 
 pygame.quit()

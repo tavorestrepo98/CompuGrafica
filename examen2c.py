@@ -26,14 +26,17 @@ if __name__ == '__main__':
                 fin = False
 
         #r = 140*sin(4*radians(x))
-        #r=int(280*cos(radians(5*x)))#flor n petalos
+        r=int(280*cos(radians(3*x)))#flor n petalos
+        r2=int(280*sin(radians(3*x-78)))
         #r = 200#circunferencia
         #r = 1 + 0.1*x#espiral de arquimedes
         #r = int(60/(1 + 0.8*cos(radians(x))))#elipse
         #r = 30/(1 + 1.5*cos(radians(x)))  #hiperbola
-        r = 100 + 100*cos(radians(x))#cardioide
+        #r = 100 + 100*cos(radians(x))#cardioide
         #r = 50 + 80*cos(radians(x))#caracol con lazo interno
         pygame.draw.circle(pantalla, AZUL, trascartesiano(CENTRO, polares(r, x)), 2)
+        pygame.draw.circle(pantalla, AZUL, trascartesiano(CENTRO, polares(r2, x)), 2)
+
 
         x += 0.12
 

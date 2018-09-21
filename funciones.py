@@ -40,8 +40,8 @@ def rot_punto(fijo, punto):
 	return [x, y]
 
 def polares(r, angulo):
-	x = int(r*cos(angulo))
-	y = int(r*sin(angulo))
+	x = int(r*cos(radians(angulo)))
+	y = int(r*sin(radians(angulo)))
 	return [x, y]
 
 

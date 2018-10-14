@@ -1,8 +1,8 @@
 import pygame
 from funciones import *
 from math import *
-from dibujos import *
 from random import *
+from personajes import*
 
 ancho = 1300
 alto = 710
@@ -13,124 +13,83 @@ VERDE = (0,255,0)
 ROJO = (255,0,0)
 AZUL = (0,0,255)
 
-class Muro(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([50, 70])
-        self.image.fill(BLANCO)
-        self.rect = self.image.get_rect()
-        self.rect.x = ancho/2
-        self.rect.y = alto/2
-
-    def update(self):
-        pass
-
-class Jugador(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([40, 40])
-        self.image.fill(AZUL)
-        self.muros = pygame.sprite.Group()
-        self.rect = self.image.get_rect()
-        self.rect.x = randrange(1, ancho - self.rect.width)
-        self.rect.y = 0
-        self.vel_x = 0
-        self.vel_y = 0
-
-    def update(self):
-        if ((self.rect.x + self.rect.width) >= ancho):
-            self.rect.x = ancho - self.rect.width
-        if self.rect.y < 0:
-            self.rect.y = 0
-        if (self.rect.y + self.rect.height) >= alto:
-            self.rect.y = alto - self.rect.height
-        if self.rect.x < 0:
-            self.rect.x = 1
-        self.rect.x += self.vel_x
-        ls_col = pygame.sprite.spritecollide(self, self.muros, False)
-        for m in ls_col:
-            if self.vel_x>0:
-                self.rect.right = m.rect.left
-            if self.vel_x<0:
-                self.rect.left = m.rect.right
-        self.rect.y += self.vel_y
-        ls2_col = pygame.sprite.spritecollide(self, self.muros, False)
-        for k in ls2_col:
-            if self.vel_y>0:
-                self.rect.bottom = k.rect.top
-            if self.vel_y<0:
-                self.rect.top = k.rect.bottom
-
-
-class Rival(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([20, 20])
-        self.image.fill(VERDE)
-        self.rect = self.image.get_rect()
-        self.vel_x = 0
-        self.temp = randrange(900, 1400)
-
-    def update(self):
-        if ((self.rect.x + self.rect.width) >= ancho) or (self.rect.x <= 0):
-            self.vel_x = -self.vel_x
-        self.rect.x += self.vel_x
-
-class Bala(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([10, 15])
-        self.image.fill(AZUL)
-        self.rect = self.image.get_rect()
-        self.vel_y = 7
-
-    def update(self):
-        self.rect.y -= self.vel_y
-
-class Vida(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.an = 200
-        self.image = pygame.Surface([self.an, 20])
-        self.image.fill(ROJO)
-        self.rect = self.image.get_rect()
-
-    def update(self):
-        self.image = pygame.Surface([self.an, 20])
-        self.image.fill(ROJO)
-        self.rect = self.image.get_rect()
-        self.rect.x = 15
-        self.rect.y = alto - 40
-
-
 
 
 if __name__ == '__main__':
     #inicializacion
     pygame.init()
     pantalla = pygame.display.set_mode([ancho, alto])
-    pygame.display.set_caption("Navesitas")
+    pygame.display.set_caption("LABERINTO")
     jugadores = pygame.sprite.Group()
     vidas = pygame.sprite.Group()
+    rivales = pygame.sprite.Group()
+    rivales2 = pygame.sprite.Group()
+    balas = pygame.sprite.Group()
 
 
-    m1 = Muro()
+
+    m1 = Muro(62, 220)
+    m1.rect.x = 400
+    m1.rect.y = 0
+
+    m2 = Muro(120, 45)
+    m2.rect.x = 0
+    m2.rect.y = 230
+
+    m3 = Muro(60, 69)
+    m3.rect.x = 740
+    m3.rect.y = 0
+
+    m4 = Muro(70, 370)
+    m4.rect.x = 740
+    m4.rect.y = 172
+
+    m5 = Muro(66, 66)
+    m5.rect.x = 398
+    m5.rect.y = 500
+
+    m6 = Muro(220, 73)
+    m6.rect.x = 954
+    m6.rect.y = 277
 
     v = Vida()
-    v.rect.x = 15
-    v.rect.y = alto - 40
+
     vidas.add(v)
+
+    rival1 = Rival()
+    rival1.rect.x = 5
+    rival1.rect.y = 518
+    rival1.vel_x = 1
+
+    rival2 = Rival()
+    rival2.rect.x = 578
+    rival2.rect.y = 3
+    rival2.vel_y = 1
+
+
     j1 = Jugador()
-    j1.rect.y = alto - j1.rect.height-80
+    j1.rect.y = randrange(1, 170)
+    j1.rect.x = randrange(1, 170)
 
     jugadores.add(j1)
-    j1.muros.add(m1)
+    j1.muros.add(m1, m2, m3, m4, m5, m6)
+    rivales.add(rival1)
+    rivales2.add(rival2)
+
 
 
     pygame.display.flip()
     reloj = pygame.time.Clock()
     fin = False
-    puntos = 0
+    mifuente = pygame.font.SysFont("Arial", 60)
+    texto = mifuente.render("JUEGO NUEVO", True, ROJO)
+    pantalla.blit(texto, [(ancho/2)-189, (alto/2)-30])
+    fin2 = False
+    pygame.display.flip()
+    while not fin2:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                fin2 = True
 
     while not fin:
         #captura de eventos
@@ -140,42 +99,83 @@ if __name__ == '__main__':
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
-                    j1.vel_x = 5
+                    j1.vel_x = 4
                     j1.vel_y = 0
                 elif event.key == pygame.K_LEFT:
-                    j1.vel_x = -5
+                    j1.vel_x = -4
                     j1.vel_y = 0
                 elif event.key == pygame.K_UP:
                     j1.vel_x = 0
-                    j1.vel_y = -5
+                    j1.vel_y = -4
                 elif event.key == pygame.K_DOWN:
                     j1.vel_x = 0
-                    j1.vel_y = 5
+                    j1.vel_y = 4
             elif event.type == pygame.KEYUP:
                 j1.vel_x = 0
                 j1.vel_y = 0
 
-
-
-
-
-
-
         #Control
+        for r in rivales:
+            r.temp -= 1
+            if r.temp  == 0:
+                p = Bala()
+                p.rect.x = r.rect.x + 4
+                p.rect.y = r.rect.y
+                p.vel_y = 3
+                p.image.fill([180, 12, 130])
+                balas.add(p)
+                r.temp = 120
+
+        for r2 in rivales2:
+            r2.temp -= 1
+            if r2.temp == 0:
+                bal = Bala()
+                bal.rect.x = r2.rect.x
+                bal.rect.y = r2.rect.y + 5
+                bal.vel_x = 2
+                bal.image.fill(ROJO)
+                balas.add(bal)
+                r2.temp = 120
+
+        for p in balas:
+            p_col = pygame.sprite.spritecollide(p, jugadores, False)
+            p_col2 = pygame.sprite.spritecollide(p, j1.muros, False)
+            for e2 in p_col2:
+                balas.remove(p)
+            for e in p_col:
+                balas.remove(p)
+            if p.rect.y < 0:
+                balas.remove(p)
+
+        
+
+
+
 
         jugadores.update()
         vidas.update()
+        rivales.update(j1.muros)
+        rivales2.update(j1.muros)
+        balas.update()
+
+
 
         #Refresco de pantalla
         pantalla.fill(NEGRO)
         jugadores.draw(pantalla)
         vidas.draw(pantalla)
         j1.muros.draw(pantalla)
+        rivales.draw(pantalla)
+        rivales2.draw(pantalla)
+        balas.draw(pantalla)
 
 
         pygame.display.flip()
-        reloj.tick(200)
+        reloj.tick(600)
 
+        if (j1.rect.x >= ancho-107) and (j1.rect.y <= 107):
+            print "GANASTE"
+            fin = True
 
 
 pygame.quit()

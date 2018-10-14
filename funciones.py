@@ -1,5 +1,15 @@
 from math import *
 from random import *
+import pygame
+
+ancho = 1300
+alto = 710
+CENTRO = (ancho/2, alto/2)
+NEGRO = (0,0,0)
+BLANCO = (255,255,255)
+VERDE = (0,255,0)
+ROJO = (255,0,0)
+AZUL = (0,0,255)
 
 def traslacion(l, l2):
 	x = l[0]+l2[0]
@@ -54,3 +64,17 @@ def tras_original(p1, p2):
 	x = p2[0]+p1[0]
 	y = p2[1]+p1[1]
 	return [x, y]
+
+
+def movimientoabajo(imagen, pantalla):
+	i = 0
+	j = 2000
+	while j>0:
+		pantalla.fill(NEGRO)
+		pantalla.blit(imagen[0][i], [0,0])
+		pygame.display.flip()
+		if i<2:
+			i+=1
+		else:
+			i = 0
+		j-=1

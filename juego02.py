@@ -47,18 +47,6 @@ class Rival(pygame.sprite.Sprite):
             self.vel_x = -self.vel_x
         self.rect.x += self.vel_x
 
-class Bala(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface([10, 15])
-        self.image.fill(AZUL)
-        self.rect = self.image.get_rect()
-        self.vel_y = 7
-
-    def update(self):
-        self.rect.y -= self.vel_y
-
-
 
 if __name__ == '__main__':
     #inicializacion

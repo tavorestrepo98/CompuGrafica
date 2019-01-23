@@ -28,7 +28,7 @@ AZUL = (0,0,255)
 if __name__ == '__main__':
     pygame.init()
     pantalla = pygame.display.set_mode([ancho, alto])
-    pygame.display.set_caption("LABERINTO")
+    pygame.display.set_caption("PALOMA")
     pygame.display.flip()
     ter = pygame.image.load("terrenogen.png")
     print ter.get_rect()
@@ -46,7 +46,7 @@ if __name__ == '__main__':
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
                     pantalla.fill(NEGRO)
-                    pantalla.blit(pygame.transform.scale(a1[0][i], [100, 100]), [(ancho/2)-41, (alto/2)-72])
+                    pantalla.blit(pygame.transform.scale(a1[0][i], [120, 120]), [(ancho/2)-41, (alto/2)-72])
                     if i<8:
                         i+=1
                     else:
@@ -54,7 +54,7 @@ if __name__ == '__main__':
                     pygame.display.flip()
                 if event.key == pygame.K_UP:
                     pantalla.fill(NEGRO)
-                    pantalla.blit(pygame.transform.scale(a1[3][i], [100, 100]), [(ancho/2)-41, (alto/2)-72])
+                    pantalla.blit(pygame.transform.scale(a1[3][i], [120, 120]), [(ancho/2)-41, (alto/2)-72])
                     pygame.display.flip()
                     if i<8:
                         i+=1
@@ -62,7 +62,7 @@ if __name__ == '__main__':
                         i = 6
                 if event.key == pygame.K_RIGHT:
                     pantalla.fill(NEGRO)
-                    pantalla.blit(pygame.transform.scale(a1[2][i], [100, 100]), [(ancho/2)-41, (alto/2)-72])
+                    pantalla.blit(pygame.transform.scale(a1[2][i], [120, 120]), [(ancho/2)-41, (alto/2)-72])
                     pygame.display.flip()
                     if i<8:
                         i+=1
@@ -70,7 +70,7 @@ if __name__ == '__main__':
                         i = 6
                 if event.key == pygame.K_LEFT:
                     pantalla.fill(NEGRO)
-                    pantalla.blit(pygame.transform.scale(a1[1][i], [100, 100]), [(ancho/2)-41, (alto/2)-72])
+                    pantalla.blit(pygame.transform.scale(a1[1][i], [120, 120]), [(ancho/2)-41, (alto/2)-72])
                     pygame.display.flip()
                     if i<8:
                         i+=1
@@ -81,4 +81,4 @@ if __name__ == '__main__':
 
 
 
-        reloj.tick(50)
+        reloj.tick(90)

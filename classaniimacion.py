@@ -20,21 +20,17 @@ class Jugador(pygame.sprite.Sprite):
         self.objs = pygame.sprite.Group()
 
     def update(self):
-
         self.image = self.m[self.accion][self.con]
         if self.accion == 2:
             for e in self.objs:
                 pi = [self.rect.x + self.rect.width, self.rect.y]
                 if e.rect.collidepoint(pi):
                     print 'golpe'
-
-
         if self.con < self.lim[self.accion]:
             self.con +=1
         else:
             self.con = 0
             self.accion = 1
-
         self.rect.x += self.vel_x
         self.rect.y += self.vel_y
 
@@ -117,6 +113,15 @@ if __name__ == '__main__':
                     j.con = 0
                 if event.key == pygame.K_x:
                     j.accion = 2
+                    j.con = 0
+                if event.key == pygame.K_a:
+                    j.accion = 6
+                    j.con = 0
+                if event.key == pygame.K_s:
+                    j.accion = 3
+                    j.con = 0
+                if event.key == pygame.K_d:
+                    j.accion = 8
                     j.con = 0
             if event.type == pygame.KEYUP:
                 j.vel_x = 0
